@@ -1,0 +1,27 @@
+{
+  "name": "gigwidget-signalling-server",
+  "version": "1.0.0",
+  "description": "WebRTC signaling server for Gigwidget P2P collaboration",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "y-websocket-server --port ${PORT:-4444}",
+    "dev": "y-websocket-server --port 4444"
+  },
+  "keywords": [
+    "yjs",
+    "websocket",
+    "signaling",
+    "webrtc",
+    "p2p",
+    "gigwidget"
+  ],
+  "author": "Toby",
+  "license": "MIT",
+  "dependencies": {
+    "y-websocket-server": "^0.8.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
