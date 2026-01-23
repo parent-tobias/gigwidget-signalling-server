@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "y-websocket-server --port ${PORT:-4444}",
-    "dev": "y-websocket-server --port 4444"
+    "start": "npx y-websocket --port ${PORT:-4444}",
+    "dev": "npx y-websocket --port 4444"
   },
   "keywords": [
     "yjs",
