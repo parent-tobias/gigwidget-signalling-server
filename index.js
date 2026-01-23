@@ -1,4 +1,4 @@
-import WebsocketServer from 'y-websocket-server';
+const WebsocketServer = require('y-websocket-server');
 
 const port = process.env.PORT || 4444;
 
