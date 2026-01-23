@@ -18,7 +18,8 @@
   "author": "Toby",
   "license": "MIT",
   "dependencies": {
-    "y-websocket-server": "^1.0.2"
+    "ws": "^8.14.2",
+    "y-protocols": "^1.0.6"
   },
   "engines": {
     "node": ">=18.0.0"
