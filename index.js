@@ -13,14 +13,19 @@ const port = parseInt(process.env.PORT, 10) || 4444;
 console.log('Using port:', port);
 
 const server = http.createServer((req, res) => {
+  console.log(`HTTP request: ${req.method} ${req.url}`);
+
   // Health check endpoint for Railway
   if (req.url === '/health' || req.url === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.writeHead(200, {
+      'Content-Type': 'text/plain',
+      'Connection': 'keep-alive'
+    });
     res.end('OK');
     return;
   }
-  res.writeHead(404);
-  res.end();
+  res.writeHead(404, { 'Content-Type': 'text/plain' });
+  res.end('Not Found');
 });
 
 const wss = new WebSocket.Server({ server });
