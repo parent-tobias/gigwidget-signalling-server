@@ -1,8 +1,16 @@
-const http = require('http');
-const WebSocket = require('ws');
-const crypto = require('crypto');
+console.log('Starting signaling server...');
+console.log('Node version:', process.version);
+console.log('PORT env:', process.env.PORT);
 
-const port = process.env.PORT || 4444;
+const http = require('http');
+console.log('http module loaded');
+const WebSocket = require('ws');
+console.log('ws module loaded');
+const crypto = require('crypto');
+console.log('crypto module loaded');
+
+const port = parseInt(process.env.PORT, 10) || 4444;
+console.log('Using port:', port);
 
 const server = http.createServer((req, res) => {
   // Health check endpoint for Railway
@@ -195,4 +203,20 @@ process.on('SIGTERM', () => {
     console.log('HTTP server closed');
     process.exit(0);
   });
+});
+
+// Handle uncaught errors
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught exception:', err);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled rejection at:', promise, 'reason:', reason);
+});
+
+// Also handle server errors
+server.on('error', (err) => {
+  console.error('Server error:', err);
+  process.exit(1);
 });
